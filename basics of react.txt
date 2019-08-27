@@ -1,0 +1,60 @@
+function Button() {
+	return <button>TEST</button>;
+}
+
+ReactDOM.render(
+  <Button />, 
+  document.getElementById('mountNode'),
+);                                          //rendering a test button
+
+
+
+function Button() {
+  const[counter,setCounter]=useState(0);
+	return <button onClick={()=>setCounter(counter)}>{counter}</button>;
+}
+
+ReactDOM.render(
+  <Button />, 
+  document.getElementById('mountNode'),
+);                                      //rendering how many times a user clicks the button
+
+
+function Button() {
+  const[counter,setCounter]=useState(5);
+	return <button onClick={()=>setCounter(counter+counter)}>{counter}</button>;
+}
+
+ReactDOM.render(
+  <Button />, 
+  document.getElementById('mountNode'),
+);                                      //starting with 5 and incrementing it as a double when user clicks it
+
+function Button(props) {
+	return {
+  <button onClick={props.onClickFunction}>
+  +1
+  </button>
+  };
+}
+function Display(props){
+  return {
+    <div>{props.message}</div>
+  };
+}
+
+function App(){
+  	const [counter, setCounter] = useState(42);
+  const incrementCounter=() =>setCounter(counter+1);
+  return {
+    <div>
+      <Button onClickFunction={incrementCounter}/>
+      <Display message={counter}/>
+      </div>
+  };
+  }
+
+ReactDOM.render(
+  <App />, 
+  document.getElementById('mountNode'),
+);
